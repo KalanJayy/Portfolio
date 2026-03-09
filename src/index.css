@@ -1,68 +1,80 @@
+/* ── Reset & Base ────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* iOS system palette — dark mode */
+  --clr-bg:           #000000;   /* iOS dark grouped background */
+  --clr-bg2:          #1c1c1e;   /* iOS dark secondary background */
+  --clr-surface:      #1c1c1e;   /* iOS dark card surface */
+  --clr-surface2:     #2c2c2e;   /* iOS dark elevated surface */
+  --clr-border:       rgba(255,255,255,0.10);
+  --clr-sep:          rgba(255,255,255,0.15); /* iOS dark separator */
+  --clr-text:         #ffffff;
+  --clr-text2:        rgba(235,235,245,0.60); /* iOS dark secondary label */
+  --clr-muted:        rgba(235,235,245,0.60);
+  --clr-subtle:       rgba(235,235,245,0.30); /* iOS dark tertiary */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* iOS system colours — dark variant (slightly brighter) */
+  --ios-blue:         #0A84FF;
+  --ios-blue-bg:      rgba(10,132,255,0.18);
+  --ios-green:        #30D158;
+  --ios-green-bg:     rgba(48,209,88,0.15);
+  --ios-orange:       #FF9F0A;
+  --ios-purple:       #BF5AF2;
+  --ios-red:          #FF453A;
+  --ios-teal:         #64D2FF;
+  --ios-indigo:       #5E5CE6;
+  --ios-fill:         rgba(120,120,128,0.22); /* dark system fill */
+  --ios-fill2:        rgba(120,120,128,0.32);
 
+  /* geometry — iOS uses large radii */
+  --radius-xs:  6px;
+  --radius-sm:  10px;
+  --radius-md:  13px;
+  --radius-lg:  18px;
+  --radius-xl:  22px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.40), 0 0 0 0.5px rgba(255,255,255,0.06);
+  --shadow-lift: 0 8px 30px rgba(0,0,0,0.55);
+  --transition: 0.22s cubic-bezier(.4,0,.2,1);
+
+  font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', 'Inter', system-ui, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+ul { list-style: none; }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+/* ── iOS-style scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 999px; }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* ── Selection ── */
+::selection { background: rgba(10,132,255,0.30); color: var(--clr-text); }
+
+/* ── Scroll-reveal utility ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s cubic-bezier(.22,1,.36,1), transform 0.6s cubic-bezier(.22,1,.36,1);
 }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.10s; }
+.reveal-d2 { transition-delay: 0.20s; }
+.reveal-d3 { transition-delay: 0.30s; }
+.reveal-d4 { transition-delay: 0.40s; }
+.reveal-d5 { transition-delay: 0.50s; }

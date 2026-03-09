@@ -1,0 +1,89 @@
+.about {
+  padding: 6rem 1.5rem;
+}
+.container { max-width: 960px; margin: 0 auto; }
+
+/* iOS section header style: all-caps small label */
+.heading {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+}
+.heading span { color: var(--ios-blue); }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  align-items: start;
+}
+.text p {
+  color: var(--clr-muted);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  font-size: 0.97rem;
+  letter-spacing: -0.1px;
+}
+
+/* iOS grouped table-style info rows */
+.infoGrid {
+  margin-top: 1.5rem;
+  background: var(--clr-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.infoGrid div {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--clr-text);
+  padding: 0.7rem 1rem;
+  border-bottom: 0.5px solid var(--clr-border);
+}
+.infoGrid div:last-child { border-bottom: none; }
+.infoGrid span { font-size: 1rem; width: 20px; text-align: center; }
+
+/* iOS stat cards stacked like Settings rows */
+.statsCol {
+  background: var(--clr-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  min-width: 160px;
+}
+.statCard {
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+  border-bottom: 0.5px solid var(--clr-border);
+  transition: background var(--transition);
+}
+.statCard:last-child { border-bottom: none; }
+.statCard:hover { background: var(--clr-surface2); }
+.statValue {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--ios-blue);
+  letter-spacing: -1.5px;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.statLabel {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--clr-muted);
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  .statsCol { display: grid; grid-template-columns: repeat(3,1fr); min-width: 0; }
+  .statCard { border-bottom: none; border-right: 0.5px solid var(--clr-border); }
+  .statCard:last-child { border-right: none; }
+}

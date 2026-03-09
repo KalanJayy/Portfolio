@@ -1,0 +1,106 @@
+/* Fixed full-page ambient background — iOS dark wallpaper style */
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  /* iOS dark grouped background */
+  background: #000000;
+}
+
+/* ── Orbs ── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+/* Top-left: iOS blue — brighter on dark */
+.orb1 {
+  width: 680px;
+  height: 680px;
+  top: -220px;
+  left: -180px;
+  background: radial-gradient(circle at 40% 40%,
+    rgba(10, 132, 255, 0.30) 0%,
+    rgba(94, 92, 230, 0.16) 50%,
+    transparent 70%
+  );
+  animation: drift1 22s ease-in-out infinite alternate;
+}
+
+/* Top-right: iOS teal / cyan */
+.orb2 {
+  width: 560px;
+  height: 560px;
+  top: -100px;
+  right: -160px;
+  background: radial-gradient(circle at 60% 40%,
+    rgba(100, 210, 255, 0.22) 0%,
+    rgba(48, 209, 88, 0.10) 55%,
+    transparent 70%
+  );
+  animation: drift2 28s ease-in-out infinite alternate;
+}
+
+/* Center-bottom: iOS purple / indigo */
+.orb3 {
+  width: 700px;
+  height: 700px;
+  bottom: -240px;
+  left: 30%;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(191, 90, 242, 0.22) 0%,
+    rgba(94, 92, 230, 0.14) 50%,
+    transparent 70%
+  );
+  animation: drift3 32s ease-in-out infinite alternate;
+}
+
+/* Bottom-right: warm iOS orange */
+.orb4 {
+  width: 480px;
+  height: 480px;
+  bottom: 10%;
+  right: -120px;
+  background: radial-gradient(circle at 50% 60%,
+    rgba(255, 159, 10, 0.20) 0%,
+    rgba(255, 69, 58, 0.08) 55%,
+    transparent 70%
+  );
+  animation: drift4 25s ease-in-out infinite alternate;
+}
+
+/* ── Subtle dot mesh — mimics iOS depth texture ── */
+.mesh {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* ── Drift keyframes — slow & organic ── */
+@keyframes drift1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(30px, 40px) scale(1.04); }
+  66%  { transform: translate(-20px, 20px) scale(0.97); }
+  100% { transform: translate(40px, -30px) scale(1.06); }
+}
+@keyframes drift2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  40%  { transform: translate(-40px, 30px) scale(1.05); }
+  100% { transform: translate(20px, 50px) scale(0.96); }
+}
+@keyframes drift3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-30px, -40px) scale(1.07); }
+  100% { transform: translate(50px, 20px) scale(0.95); }
+}
+@keyframes drift4 {
+  0%   { transform: translate(0, 0) scale(1); }
+  35%  { transform: translate(-35px, -25px) scale(1.04); }
+  100% { transform: translate(25px, -40px) scale(1.08); }
+}
