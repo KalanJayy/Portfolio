@@ -1,5 +1,117 @@
-.skills { padding: 6rem 1.5rem; background: var(--clr-bg); }
-.container { max-width: 960px; margin: 0 auto; }
+.skills {
+  padding: 8rem 2.5rem;
+  border-bottom: 1px solid var(--clr-border);
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--clr-border);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.sub {
+  color: var(--clr-muted);
+  margin-bottom: 4rem;
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+/* Editorial list layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--clr-border);
+  border-left: 1px solid var(--clr-border);
+}
+.card {
+  padding: 2.5rem;
+  border-right: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--clr-border);
+  transition: background var(--transition);
+}
+.card:hover { background: var(--ios-fill); }
+
+.cardHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.index {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--clr-muted);
+  letter-spacing: 0.10em;
+  flex-shrink: 0;
+}
+.cardHeader h3 {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--clr-text);
+  letter-spacing: -0.01em;
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  color: var(--clr-muted);
+  font-size: 0.76rem;
+  font-weight: 400;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+  border: 1px solid var(--clr-border);
+  letter-spacing: -0.01em;
+  transition: border-color var(--transition), color var(--transition);
+}
+.tag:hover {
+  border-color: var(--clr-text);
+  color: var(--clr-text);
+}
+.tagIcon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: brightness(0) invert(0.5);
+  transition: filter var(--transition);
+}
+.tag:hover .tagIcon {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  .skills { padding: 5rem 1.5rem; }
+}
+
 
 .heading {
   font-size: clamp(1.8rem, 4vw, 2.6rem);

@@ -40,10 +40,7 @@ export default function Projects() {
     <section className={styles.projects} id="projects" ref={ref as React.RefObject<HTMLElement>}>
       <div className={styles.container}>
         <div
-          className={`reveal ${visible ? 'visible' : ''}`}
-          style={{ display: 'inline-block', fontSize: '0.72rem', fontWeight: 700,
-            letterSpacing: '0.10em', textTransform: 'uppercase' as const,
-            color: 'var(--clr-subtle)', marginBottom: '1.4rem' }}
+          className={`${styles.eyebrow} reveal ${visible ? 'visible' : ''}`}
         >
           Projects
         </div>

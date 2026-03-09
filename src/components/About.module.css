@@ -1,7 +1,100 @@
 .about {
-  padding: 6rem 1.5rem;
+  padding: 8rem 2.5rem;
+  border-bottom: 1px solid var(--clr-border);
 }
-.container { max-width: 960px; margin: 0 auto; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--clr-border);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 4rem;
+  max-width: 800px;
+}
+.heading span { font-style: italic; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.text p {
+  color: var(--clr-muted);
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+  font-size: 0.97rem;
+  font-weight: 300;
+}
+
+/* Stats as editorial number display */
+.statsCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-left: 1px solid var(--clr-border);
+  padding-left: 3rem;
+}
+.statCard {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--clr-border);
+}
+.statCard:nth-child(odd) {
+  padding-right: 2rem;
+  border-right: 1px solid var(--clr-border);
+}
+.statCard:last-child,
+.statCard:nth-last-child(2):nth-child(odd) {
+  border-bottom: none;
+}
+.statValue {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 400;
+  color: var(--clr-text);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.statLabel {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--clr-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.infoGrid { display: none; }
+
+@media (max-width: 800px) {
+  .grid { grid-template-columns: 1fr; gap: 3rem; }
+  .statsCol { border-left: none; padding-left: 0; border-top: 1px solid var(--clr-border); padding-top: 2rem; }
+  .about { padding: 5rem 1.5rem; }
+}
+
 
 /* iOS section header style: all-caps small label */
 .heading {

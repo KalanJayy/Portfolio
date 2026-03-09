@@ -1,12 +1,14 @@
-/* Fixed full-page ambient background — iOS dark wallpaper style */
+/* Fixed full-page background — editorial minimal */
 .root {
   position: fixed;
   inset: 0;
   z-index: -1;
-  overflow: hidden;
-  /* iOS dark grouped background */
-  background: #000000;
+  background: #0a0a0a;
 }
+
+/* hide all orbs and mesh — clean editorial needs no orbs */
+.orb, .orb1, .orb2, .orb3, .orb4, .mesh { display: none; }
+
 
 /* ── Orbs ── */
 .orb {
