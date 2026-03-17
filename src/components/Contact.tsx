@@ -47,11 +47,11 @@ export default function Contact() {
           Contact
         </div>
         <h2 className={styles.heading}>
-          Let&apos;s build something <span>together</span>
+          <span>Let's Create</span>
         </h2>
         <p className={styles.sub}>
           Have a project in mind or just want to say hi?<br />
-          My inbox is always open.
+          Drop a message
         </p>
 
         {sent ? (
