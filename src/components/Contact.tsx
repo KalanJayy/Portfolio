@@ -56,7 +56,6 @@ export default function Contact() {
 
         {sent ? (
           <div className={styles.success}>
-            <span>🎉</span>
             <h3>Message sent!</h3>
             <p>Thanks for reaching out. I'll get back to you soon.</p>
           </div>
@@ -68,7 +67,7 @@ export default function Contact() {
                 <input
                   name="name"
                   type="text"
-                  placeholder="John Doe"
+                  placeholder=" "
                   required
                   value={form.name}
                   onChange={handleChange}
@@ -79,7 +78,7 @@ export default function Contact() {
                 <input
                   name="email"
                   type="email"
-                  placeholder="john@example.com"
+                  placeholder=""
                   required
                   value={form.email}
                   onChange={handleChange}
@@ -91,7 +90,7 @@ export default function Contact() {
               <textarea
                 name="message"
                 rows={5}
-                placeholder="Tell me about your project..."
+                placeholder=""
                 required
                 value={form.message}
                 onChange={handleChange}
