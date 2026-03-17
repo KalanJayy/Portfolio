@@ -2,6 +2,8 @@ import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import styles from './Projects.module.css'
+import livecoachthumb from '../assets/livecoach.png'
+import sirikirulathumb from '../assets/sirikirulathumb.png'
 
 const projects = [
   {
@@ -11,28 +13,28 @@ const projects = [
     num: '01',
     live: 'https://livecoach94.com',
     code: 'https://github.com/KalanJayy',
-    featured: false,
-    thumb: 'https://api.microlink.io/?url=https://livecoach94.com&screenshot=true&meta=false&embed=screenshot.url',
-  },
-  {
-    title: 'TrailTalk',
-    desc: 'A full stack React Native app for hikers to share trail experiences, ratings, and reviews, similar to a social platform for outdoor enthusiasts.',
-    tags: ['React Native', 'Node.js', 'Express.js', 'MongoDB'],
-    num: '02',
-    live: 'https://drive.google.com/file/d/1V6-4GJbyKLahHuftV8SDjMgpzqd7yo3z/view?usp=drive_link&usp=embed_faceboo',
-    code: 'https://github.com/KalanJayy',
-    featured: false,
-    thumb: null,
+    featured: true,
+    thumb: livecoachthumb ,
   },
   {
     title: 'Siri Kirula',
     desc: 'A full stack website for Siri Kirula Private Limited, a growing jewellery business in Sri Lanka..',
     tags: ['React','Node.js', 'Express.js', 'Tailwindcss'],
-    num: '03',
+    num: '02',
     live: 'https://siri-kirula.vercel.app/',
     code: 'https://github.com/KalanJayy',
+    featured: true,
+    thumb: sirikirulathumb,
+  },
+  {
+    title: 'TrailTalk',
+    desc: 'A full stack React Native app for hikers to share trail experiences, ratings, and reviews, similar to a social platform for outdoor enthusiasts.',
+    tags: ['React Native', 'Node.js', 'Express.js', 'MongoDB'],
+    num: '03',
+    live: 'https://drive.google.com/file/d/1V6-4GJbyKLahHuftV8SDjMgpzqd7yo3z/view?usp=drive_link&usp=embed_faceboo',
+    code: 'https://github.com/KalanJayy',
     featured: false,
-    thumb: 'https://api.microlink.io/?url=https://siri-kirula.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
+    thumb: null,
   },
 ]
 

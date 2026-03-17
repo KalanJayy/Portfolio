@@ -59,7 +59,7 @@
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--clr-text);
+  color: var(--clr-bg);
   border: 1px solid var(--clr-border);
   padding: 0.45rem 1.1rem;
   border-radius: 2px;
@@ -152,7 +152,7 @@
   margin-left: 0.5rem;
   padding: 0.42rem 1.1rem;
   background: var(--ios-blue);
-  color: #ffffff;
+  /* color: #ffffff; */
   border-radius: var(--radius-pill);
   font-size: 0.84rem;
   font-weight: 600;
@@ -188,7 +188,7 @@
     display: none;
     position: fixed;
     inset: 56px 0 0 0;
-    background: rgba(242,242,247,0.96);
+    /* background: rgba(242,242,247,0.96); */
     backdrop-filter: blur(20px);
     flex-direction: column;
     align-items: center;

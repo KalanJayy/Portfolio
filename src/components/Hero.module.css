@@ -48,13 +48,13 @@
 
 /* ── Main grid ── */
 .grid {
-  flex: 1;
+  /* flex: 1; */
   display: grid;
   grid-template-columns: 1fr 420px;
   gap: 0;
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
+  margin: auto;
   padding: 0 2.5rem;
   align-items: end;
   padding-bottom: 4rem;
@@ -242,9 +242,9 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
   gap: 3.5rem;
-  align-items: center;
+  /* align-items: center; */
 }
 
 /* ── Availability badge — iOS green system colour ── */
@@ -322,7 +322,7 @@
 }
 .btnPrimary {
   background: var(--ios-blue);
-  color: #ffffff;
+  /* color: #ffffff; */
   border: none;
   padding: 0.65rem 1.5rem;
   border-radius: var(--radius-pill);
@@ -358,7 +358,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px; height: 36px;
+  width: 86px; height: 36px;
   border-radius: var(--radius-sm);
   background: var(--ios-fill);
   color: var(--ios-blue);
@@ -423,7 +423,7 @@
   background: var(--ios-fill);
   border: none;
   border-radius: 50%;
-  width: 34px; height: 34px;
+  width: 72px; height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
