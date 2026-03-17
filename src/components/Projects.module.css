@@ -33,33 +33,39 @@
 .sub { color: var(--clr-muted); margin-bottom: 4rem; font-size: 0.95rem; font-weight: 300; }
 
 .grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border-top: 1px solid var(--clr-border);
+  position: relative;
+  width: 100%;
+  height: 85vh; /* Each card takes up height */
+  margin-top: 2rem;
 }
 
 .card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: grid;
-  grid-template-columns: 260px 1fr auto;
-  gap: 2.5rem;
-  align-items: start;
-  padding: 2.5rem 0;
-  border-bottom: 1px solid var(--clr-border);
-  position: relative;
-  transition: background var(--transition);
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  background: var(--clr-bg);
+  padding: 4rem 2rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--clr-border);
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+  transform-origin: top center;
 }
-.card:hover { background: var(--ios-fill); }
-.card.featured::before { display: none; }
 
 .thumbLink {
   display: block;
-  width: 260px;
-  aspect-ratio: 16 / 10;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
   overflow: hidden;
-  flex-shrink: 0;
-  border-radius: 2px;
+  border-radius: var(--radius-lg);
   background: var(--clr-surface);
+  position: relative;
 }
 .thumb {
   width: 100%;
@@ -144,10 +150,9 @@
 
 .cardLinks {
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  align-items: flex-end;
-  padding-top: 0.25rem;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.5rem;
 }
 .linkBtn {
   font-family: var(--font-mono);
@@ -183,9 +188,9 @@
 }
 .linkGhost:hover { border-color: var(--clr-text); color: var(--clr-text); }
 
-@media (max-width: 860px) {
-  .card { grid-template-columns: 1fr; gap: 1.5rem; }
-  .thumbLink { width: 100%; }
-  .cardLinks { flex-direction: row; align-items: flex-start; }
+@media (max-width: 960px) {
+  .card { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
+  .thumbLink { min-height: 250px; }
+  .grid { height: auto; min-height: 75vh; }
   .projects { padding: 5rem 1.5rem; }
 }

@@ -1,16 +1,34 @@
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import styles from './Hero.module.css'
 
 export default function Hero() {
+  const container = useRef<HTMLElement>(null)
+
+  useGSAP(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+    tl.from(`.${styles.badge}`, { y: 30, opacity: 0, duration: 0.8 })
+      .from(`.${styles.location}`, { y: 30, opacity: 0, duration: 0.8 }, "-=0.7")
+      .from(`.${styles.name}`, { y: 30, opacity: 0, duration: 0.8 }, "-=0.6")
+      .from(`.${styles.roleRow}`, { y: 30, opacity: 0, duration: 0.8 }, "-=0.6")
+      .from(`.${styles.tagline}`, { y: 30, opacity: 0, duration: 0.8 }, "-=0.6")
+      .from(`.${styles.actions}`, { y: 30, opacity: 0, duration: 0.8 }, "-=0.6")
+      .from(`.${styles.socials}`, { y: 30, opacity: 0, duration: 0.8 }, "-=0.6")
+      .from(`.${styles.portrait}`, { x: 40, opacity: 0, duration: 0.9 }, "-=1")
+  }, { scope: container })
+
   return (
-    <section className={styles.hero} id="hero">
+    <section className={styles.hero} id="hero" ref={container}>
 
       {/* ── Top bar: availability + location ── */}
       <div className={styles.topBar}>
-        <div className={`${styles.badge} ${styles.fadeUp}`} style={{ animationDelay: '0ms' }}>
+        <div className={styles.badge}>
           <span className={styles.dot} />
           Available for work
         </div>
-        <span className={`${styles.location} ${styles.fadeUp}`} style={{ animationDelay: '60ms' }}>
+        <span className={styles.location}>
           Based in Sri Lanka
         </span>
       </div>
@@ -19,24 +37,24 @@ export default function Hero() {
       <div className={styles.grid}>
         <div className={styles.content}>
 
-          <h1 className={`${styles.name} ${styles.fadeUp}`} style={{ animationDelay: '120ms' }}>
+          <h1 className={styles.name}>
             Kalana<br />
             <em>Jayaweera</em>
           </h1>
 
-          <div className={`${styles.roleRow} ${styles.fadeUp}`} style={{ animationDelay: '200ms' }}>
+          <div className={styles.roleRow}>
             <span className={styles.roleNum}>01</span>
             <span className={styles.roleTitle}>Full-Stack Developer</span>
             <span className={styles.roleNum}>—</span>
             <span className={styles.roleTitle}>React &amp; Node.js</span>
           </div>
 
-          <p className={`${styles.tagline} ${styles.fadeUp}`} style={{ animationDelay: '260ms' }}>
+          <p className={styles.tagline}>
             Building precise, high-performance web &amp; mobile products
             with clean architecture and sharp attention to detail.
           </p>
 
-          <div className={`${styles.actions} ${styles.fadeUp}`} style={{ animationDelay: '320ms' }}>
+          <div className={styles.actions}>
             <button
               className={styles.btnPrimary}
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
@@ -51,7 +69,7 @@ export default function Hero() {
             </button>
           </div>
 
-          <div className={`${styles.socials} ${styles.fadeUp}`} style={{ animationDelay: '400ms' }}>
+          <div className={styles.socials}>
             <a href="https://github.com/KalanJayy" target="_blank" rel="noreferrer">
               <GithubIcon /> GitHub
             </a>
@@ -65,7 +83,7 @@ export default function Hero() {
         </div>
 
         {/* ── Portrait ── */}
-        <div className={`${styles.portrait} ${styles.slideLeft}`}>
+        <div className={styles.portrait}>
           <img
             src="https://api.microlink.io/?url=https://github.com/KalanJayy&screenshot=true&meta=false&embed=screenshot.url"
             alt="Kalana Jayaweera"

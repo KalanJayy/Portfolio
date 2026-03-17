@@ -1,4 +1,6 @@
-import { useInView } from '../hooks/useInView'
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import styles from './About.module.css'
 
 const stats = [
@@ -7,21 +9,35 @@ const stats = [
 ]
 
 export default function About() {
-  const { ref, visible } = useInView()
+  const container = useRef<HTMLElement>(null)
+
+  useGSAP(() => {
+    gsap.from(`.${styles.eyebrow}, .${styles.heading}, .${styles.text}, .${styles.statsCol}`, {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top 80%',
+      }
+    })
+  }, { scope: container })
+
   return (
-    <section className={styles.about} id="about" ref={ref as React.RefObject<HTMLElement>}>
+    <section className={styles.about} id="about" ref={container}>
       <div className={styles.container}>
 
-        <div className={`${styles.eyebrow} reveal ${visible ? 'visible' : ''}`}>
+        <div className={styles.eyebrow}>
           About Me
         </div>
 
-        <h2 className={`${styles.heading} reveal ${visible ? 'visible' : ''} reveal-d1`}>
+        <h2 className={styles.heading}>
           Passionate about building <span>great software</span>
         </h2>
 
         <div className={styles.grid}>
-          <div className={`${styles.text} reveal ${visible ? 'visible' : ''} reveal-d2`}>
+          <div className={styles.text}>
             <p>
               I&apos;m a full-stack developer based in Sri Lanka, focused on creating
               elegant, performant web applications. I love turning complex problems
@@ -33,7 +49,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className={`${styles.statsCol} reveal ${visible ? 'visible' : ''} reveal-d3`}>
+          <div className={styles.statsCol}>
             {stats.map(s => (
               <div className={styles.statCard} key={s.label}>
                 <span className={styles.statValue}>{s.value}</span>

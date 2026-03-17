@@ -1,4 +1,6 @@
-import { useInView } from '../hooks/useInView'
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import styles from './Projects.module.css'
 
 const projects = [
@@ -35,28 +37,78 @@ const projects = [
 ]
 
 export default function Projects() {
-  const { ref, visible } = useInView()
+  const container = useRef<HTMLElement>(null)
+  const wrapper = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    // 1. Enter animation for the header
+    gsap.from(`.${styles.eyebrow}, .${styles.heading}, .${styles.sub}`, {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top 80%',
+      }
+    })
+
+    // 2. Pinning & Layering sequence
+    const cards = gsap.utils.toArray(`.${styles.card}`) as HTMLElement[]
+    
+    // We don't animate the first card, it's already visible at the bottom of the track.
+    // We animate the subsequent cards to slide up over the previous ones.
+    if (cards.length > 1) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapper.current,
+          start: 'top 15%', // Pin when the cards wrapper hits near top of screen
+          end: `+=${cards.length * 100}%`, // Scroll distance based on number of cards
+          pin: true,
+          scrub: 1, // Smooth scrubbing
+        }
+      })
+
+      cards.forEach((card, i) => {
+        if (i === 0) return // Skip first card
+
+        // Current card slides up from bottom
+        tl.fromTo(card, 
+          { y: '100%', scale: 0.9 }, 
+          { y: '0%', scale: 1, ease: 'none' }
+        )
+
+        // Previous card scales down slightly and darkens for a 3D stacking effect
+        if (i > 0) {
+          tl.to(cards[i - 1], { 
+            scale: 0.92, 
+            opacity: 0.4, 
+            ease: 'none' 
+          }, "<") // Trigger at the same time as the card sliding up
+        }
+      })
+    }
+  }, { scope: container })
+
   return (
-    <section className={styles.projects} id="projects" ref={ref as React.RefObject<HTMLElement>}>
+    <section className={styles.projects} id="projects" ref={container}>
       <div className={styles.container}>
-        <div
-          className={`${styles.eyebrow} reveal ${visible ? 'visible' : ''}`}
-        >
+        <div className={styles.eyebrow}>
           Projects
         </div>
-        <h2 className={`${styles.heading} reveal ${visible ? 'visible' : ''} reveal-d1`}>
+        <h2 className={styles.heading}>
           Things I&apos;ve built
         </h2>
-        <p className={`${styles.sub} reveal ${visible ? 'visible' : ''} reveal-d2`}>
+        <p className={styles.sub}>
           A selection of personal &amp; freelance projects.
         </p>
 
-        <div className={styles.grid}>
+        <div className={styles.grid} ref={wrapper}>
           {projects.map((p, i) => (
             <div
-              className={`${styles.card} ${p.featured ? styles.featured : ''} reveal ${visible ? 'visible' : ''}`}
-              style={{ transitionDelay: `${0.15 + i * 0.1}s` }}
+              className={`${styles.card} ${styles[`card${i+1}`]}`}
               key={p.title}
+              style={{ zIndex: i }}
             >
               {/* Thumbnail */}
               <a href={p.live} target="_blank" rel="noreferrer" className={styles.thumbLink}>

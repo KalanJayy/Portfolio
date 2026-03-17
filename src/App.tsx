@@ -7,6 +7,11 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Background from './components/Background'
 
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
 function App() {
   return (
     <>

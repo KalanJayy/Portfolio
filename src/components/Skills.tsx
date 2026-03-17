@@ -1,4 +1,6 @@
-import { useInView } from '../hooks/useInView'
+import { useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import styles from './Skills.module.css'
 
 const CDN = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons'
@@ -49,25 +51,49 @@ const categories: { title: string; skills: Skill[] }[] = [
 ]
 
 export default function Skills() {
-  const { ref, visible } = useInView()
+  const container = useRef<HTMLElement>(null)
+
+  useGSAP(() => {
+    gsap.from(`.${styles.eyebrow}, .${styles.heading}, .${styles.sub}`, {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: container.current,
+        start: 'top 80%',
+      }
+    })
+
+    gsap.from(`.${styles.card}`, {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      scrollTrigger: {
+        trigger: `.${styles.grid}`,
+        start: 'top 85%',
+      }
+    })
+  }, { scope: container })
+
   return (
-    <section className={styles.skills} id="skills" ref={ref as React.RefObject<HTMLElement>}>
+    <section className={styles.skills} id="skills" ref={container}>
       <div className={styles.container}>
-        <div className={`${styles.eyebrow} reveal ${visible ? 'visible' : ''}`}>
+        <div className={styles.eyebrow}>
           Skills
         </div>
-        <h2 className={`${styles.heading} reveal ${visible ? 'visible' : ''} reveal-d1`}>
+        <h2 className={styles.heading}>
           Technologies I work with
         </h2>
-        <p className={`${styles.sub} reveal ${visible ? 'visible' : ''} reveal-d2`}>
+        <p className={styles.sub}>
           A curated set of tools I use to ship production-ready products.
         </p>
 
         <div className={styles.grid}>
           {categories.map((cat, i) => (
             <div
-              className={`${styles.card} reveal ${visible ? 'visible' : ''}`}
-              style={{ transitionDelay: `${0.15 + i * 0.1}s` }}
+              className={styles.card}
               key={cat.title}
             >
               <div className={styles.cardHeader}>
