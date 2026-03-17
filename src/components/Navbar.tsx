@@ -33,7 +33,7 @@ export default function Navbar() {
           ))}
           <a
             className={styles.cta}
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1UG8u_VI2-yR3yuhs7jwXiwqDrB0UoOLJ/view?usp=sharing"
             target="_blank"
             rel="noreferrer"
           >
