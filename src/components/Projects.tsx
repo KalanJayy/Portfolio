@@ -4,6 +4,8 @@ import { useGSAP } from '@gsap/react'
 import styles from './Projects.module.css'
 import livecoachthumb from '../assets/livecoach.png'
 import sirikirulathumb from '../assets/sirikirulathumb.png'
+import trailtalkthumb from '../assets/trailtalk.png'
+import parkinglot from '../assets/Parkinglot.jpeg'
 
 const projects = [
   {
@@ -34,8 +36,19 @@ const projects = [
     live: 'https://drive.google.com/file/d/1V6-4GJbyKLahHuftV8SDjMgpzqd7yo3z/view?usp=drive_link&usp=embed_faceboo',
     code: 'https://github.com/KalanJayy',
     featured: false,
-    thumb: null,
+    thumb: trailtalkthumb,
   },
+  {
+    title: 'Parking Management System',
+    desc: 'a robust Parking Lot Management System using the MERN stack ',
+    tags: ['React', 'Node.js', 'Express.js', 'MongoDB'],
+    num: '03',
+    live: 'https://aluthgama-parking.vercel.app/',
+    code: '',
+    featured: false,
+    thumb: parkinglot,
+  },
+  
 ]
 
 export default function Projects() {
