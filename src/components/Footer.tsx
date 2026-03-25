@@ -14,6 +14,7 @@ export default function Footer() {
           <a href="mailto:kalana33471@gmail.com">Email</a>
         </div>
       </div>
+      
     </footer>
   )
 }
